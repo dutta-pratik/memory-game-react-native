@@ -13,6 +13,7 @@ export default function Card({ detail, selectedCard, setSelectedCard }) {
       disabled={detail.match}
     >
       <View>
+        {/* {console.log("detail", detail)} */}
         {detail.flipped ? (
           <Text style={styles.cardBack} nativeID="backview">
             {detail.value}
@@ -30,7 +31,6 @@ const styles = StyleSheet.create({
   card: {
     display: "flex",
     flexDirection: "row",
-    // width: 270,
     innerHeight: "150",
     backgroundColor: "red",
     padding: 5,
@@ -39,9 +39,6 @@ const styles = StyleSheet.create({
     width: 80,
     height: 120,
     backgroundColor: "lightblue",
-    // opacity: 1,
-    position: "absolute",
-    // zIndex: 2,
   },
   cardFront: {
     width: 80,
