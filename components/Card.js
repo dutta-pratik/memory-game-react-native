@@ -6,14 +6,13 @@ export default function Card({ detail, selectedCard, setSelectedCard }) {
     <TouchableOpacity
       style={styles.card}
       onPress={() => {
-        if (!detail.match) {
+        if (!detail.match && !detail.flipped && selectedCard.length <= 2) {
           setSelectedCard([...selectedCard, detail]);
         }
       }}
       disabled={detail.match}
     >
       <View>
-        {/* {console.log("detail", detail)} */}
         {detail.flipped ? (
           <Text style={styles.cardBack} nativeID="backview">
             {detail.value}

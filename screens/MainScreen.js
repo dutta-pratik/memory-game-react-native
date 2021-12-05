@@ -2,8 +2,6 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import Card from "../components/Card";
 
-//TODO : clicking on same card increasing turn count
-
 const cards = [
   { id: 1, value: "A", match: false, flipped: false },
   { id: 9, value: "A", match: false, flipped: false },
@@ -42,14 +40,12 @@ export default function MainScreen() {
   const flipCard = () => {
     const updatedCards = shuffledCards.map((card) => {
       if (card.id == selectedCard[0].id) {
-        let newCard = Object.create(card);
-        //   newCard.match = true;
+        let newCard = Object.assign({}, card);
         newCard.flipped = true;
         return newCard;
       }
       if (selectedCard[1] && selectedCard[1].id == card.id) {
-        let newCard = Object.create(card);
-        //   newCard.match = true;
+        let newCard = Object.assign({}, card);
         newCard.flipped = true;
         return newCard;
       }
@@ -62,14 +58,12 @@ export default function MainScreen() {
     setTimeout(() => {
       const updatedCards = shuffledCards.map((card) => {
         if (card.id == selectedCard[0].id) {
-          let newCard = Object.create(card);
-          //   newCard.match = true;
+          let newCard = Object.assign({}, card);
           newCard.flipped = false;
           return newCard;
         }
         if (selectedCard[1] && selectedCard[1].id == card.id) {
-          let newCard = Object.create(card);
-          //   newCard.match = true;
+          let newCard = Object.assign({}, card);
           newCard.flipped = false;
           return newCard;
         }
@@ -81,16 +75,16 @@ export default function MainScreen() {
 
   const cleanSelectedCard = () => {
     setTimeout(() => {
+      const currentTurn = turns + 1;
+      setTurns(currentTurn);
       setSelectedCard([]);
-    }, 1000);
+    }, 500);
   };
 
   React.useEffect(() => {
-    // selectedCard.map((card) => (card.flipped = true));
     if (selectedCard.length > 0) {
       flipCard();
       if (selectedCard.length == 2) {
-        const currentTurn = turns + 1;
         if (
           selectedCard[0].id != selectedCard[1].id &&
           selectedCard[0].value === selectedCard[1].value
@@ -98,7 +92,7 @@ export default function MainScreen() {
           const currentMatch = match + 1;
           const updatedCards = shuffledCards.map((card) => {
             if (card.value == selectedCard[0].value) {
-              let newCard = Object.create(card);
+              let newCard = Object.assign({}, card);
               newCard.match = true;
               newCard.flipped = true;
               return newCard;
@@ -112,7 +106,6 @@ export default function MainScreen() {
           revflipCard();
         }
 
-        setTurns(currentTurn);
         cleanSelectedCard();
       }
     }
@@ -120,7 +113,6 @@ export default function MainScreen() {
 
   const resetGame = () => {
     cardShuffleHelper();
-    // setTurns(0);
     setMatch(0);
   };
 
@@ -140,8 +132,10 @@ export default function MainScreen() {
           New Game
         </Text>
       </TouchableOpacity>
-      <View>
-        <Text>Match: {match}</Text>
+      <View style={styles.pointTable}>
+        <Text>
+          Match: {match} {"  "}
+        </Text>
         <Text>Turns: {turns}</Text>
       </View>
       <View>
@@ -176,5 +170,10 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
+  },
+  pointTable: {
+    display: "flex",
+    flexDirection: "row",
+    padding: 10,
   },
 });
