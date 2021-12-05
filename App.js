@@ -1,16 +1,13 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
 import MainScreen from "./screens/MainScreen";
-import { SafeAreaView } from "react-navigation";
 
 const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
-    // <SafeAreaView>
     <NavigationContainer>
       <Stack.Navigator initialRouteName="MainScreen">
         <Stack.Screen
@@ -20,6 +17,5 @@ export default function App() {
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
-    // </SafeAreaView>
   );
 }

@@ -4,7 +4,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 export default function Card({ detail, selectedCard, setSelectedCard }) {
   return (
     <TouchableOpacity
-      style={styles.card}
+      style={styles.cardBox}
       onPress={() => {
         if (!detail.match && !detail.flipped && selectedCard.length <= 2) {
           setSelectedCard([...selectedCard, detail]);
@@ -12,7 +12,7 @@ export default function Card({ detail, selectedCard, setSelectedCard }) {
       }}
       disabled={detail.match}
     >
-      <View>
+      <View style={styles.card}>
         {detail.flipped ? (
           <Text style={styles.cardBack} nativeID="backview">
             {detail.value}
@@ -27,21 +27,32 @@ export default function Card({ detail, selectedCard, setSelectedCard }) {
   );
 }
 const styles = StyleSheet.create({
-  card: {
+  cardBox: {
     display: "flex",
     flexDirection: "row",
     innerHeight: "150",
-    backgroundColor: "red",
     padding: 5,
   },
   cardBack: {
     width: 80,
     height: 120,
+    borderRadius: 5,
     backgroundColor: "lightblue",
+    fontSize: 40,
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
   cardFront: {
     width: 80,
     height: 120,
-    backgroundColor: "lightgreen",
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: "#fff",
+    color: "#fff",
+    backgroundColor: "#2E4C6D",
+    display: "flex",
+    textAlign: "center",
+    alignItems: "center",
   },
 });

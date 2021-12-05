@@ -1,0 +1,18 @@
+export const cards = [
+  { id: 1, value: "A", match: false, flipped: false },
+  { id: 9, value: "A", match: false, flipped: false },
+  { id: 2, value: "B", match: false, flipped: false },
+  { id: 10, value: "B", match: false, flipped: false },
+  { id: 3, value: "C", match: false, flipped: false },
+  { id: 11, value: "C", match: false, flipped: false },
+  { id: 4, value: "D", match: false, flipped: false },
+  { id: 12, value: "D", match: false, flipped: false },
+  { id: 5, value: "E", match: false, flipped: false },
+  { id: 13, value: "E", match: false, flipped: false },
+  { id: 6, value: "F", match: false, flipped: false },
+  { id: 14, value: "F", match: false, flipped: false },
+  { id: 7, value: "G", match: false, flipped: false },
+  { id: 15, value: "G", match: false, flipped: false },
+  { id: 8, value: "H", match: false, flipped: false },
+  { id: 16, value: "H", match: false, flipped: false },
+];
