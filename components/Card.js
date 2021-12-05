@@ -14,13 +14,9 @@ export default function Card({ detail, selectedCard, setSelectedCard }) {
     >
       <View style={styles.card}>
         {detail.flipped ? (
-          <Text style={styles.cardBack} nativeID="backview">
-            {detail.value}
-          </Text>
+          <Text style={styles.cardBack}>{detail.value}</Text>
         ) : (
-          <Text style={styles.cardFront} nativeID="frontview">
-            Memory Game
-          </Text>
+          <Text style={styles.cardFront}>Memory Game</Text>
         )}
       </View>
     </TouchableOpacity>
@@ -30,7 +26,6 @@ const styles = StyleSheet.create({
   cardBox: {
     display: "flex",
     flexDirection: "row",
-    innerHeight: "150",
     padding: 5,
   },
   cardBack: {
@@ -40,8 +35,9 @@ const styles = StyleSheet.create({
     backgroundColor: "lightblue",
     fontSize: 40,
     display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
+    textAlignVertical: "center",
+    color: "#000",
+    textAlign: "center",
   },
   cardFront: {
     width: 80,
@@ -53,6 +49,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#2E4C6D",
     display: "flex",
     textAlign: "center",
-    alignItems: "center",
+    textAlignVertical: "center",
   },
 });
